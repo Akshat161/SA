@@ -66,9 +66,9 @@ int main()
     int current_time = 0;
     q.push(0);
     int completed = 0;
-    int is_completed[100];
-    memset(is_completed, 0, sizeof(is_completed));
-    is_completed[0] = 1;
+    int is_inque[100];
+    memset(is_inque, 0, sizeof(is_inque));
+    is_inque[0] = 1;
     while (completed != n)
     {
         idx = q.front();
@@ -103,10 +103,10 @@ int main()
         }
         for (int i = 1; i < n; i++)
         {
-            if (burst_remaining[i] > 0 && p[i].arrival_time <= current_time && is_completed[i] == 0)
+            if (burst_remaining[i] > 0 && p[i].arrival_time <= current_time && is_inque[i] == 0)
             {
                 q.push(i);
-                is_completed[i] = 1;
+                is_inque[i] = 1;
             }
         }
         if (burst_remaining[idx] > 0)
@@ -120,7 +120,7 @@ int main()
                 if (burst_remaining[i] > 0)
                 {
                     q.push(i);
-                    is_completed[i] = 1;
+                    is_inque[i] = 1;
                     break;
                 }
             }
